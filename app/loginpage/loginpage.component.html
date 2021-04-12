@@ -1,0 +1,12 @@
+
+<form class="box" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>Sign in</h1>
+  <input formControlName="login" type="text" name="login" placeholder="Username" 
+  [ngClass]="{'invalid': form.get('login').invalid && form.get('login').touched}">
+	<span class="helper-text" 
+	*ngIf="form.get('login').invalid && form.get('login').touched">Required</span>
+  <input  formControlName="password" type="password" name="password" placeholder="Password"
+   [ngClass]="{'invalid': form.get('login').invalid && form.get('login').touched}">
+  <span class="helper-text" *ngIf="form.get('password').invalid && form.get('password').touched">Required</span>
+  <input type="submit" name="" value="OK" [disabled]="form.invalid">
+</form>
