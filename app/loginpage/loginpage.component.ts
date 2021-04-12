@@ -10,7 +10,7 @@ import {Response} from '../shared/interface'
 })
 export class LoginpageComponent implements OnInit {
   form: FormGroup
-  tkn: Response = new Response()
+  token: Response
   constructor(private auth:AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,11 +23,18 @@ export class LoginpageComponent implements OnInit {
   onSubmit() {
 	 
 	  this.auth.login(this.form.value).subscribe(
-	   ()=> this.router.navigate(['/viewdata']),
+	  (data:Response) =>{ this.token=data["token"]
+	  }	,
 	  error=>{
 		  console.warn(error)
 	  }
 	  )
+	  if (this.token===undefined){
+		   console.log("Wrong login/password!")
+	  }
+	  else{
+		  this.router.navigate(['/viewdata'])
+	  }
   }
 
 }
