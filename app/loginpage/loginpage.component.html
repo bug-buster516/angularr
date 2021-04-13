@@ -9,4 +9,5 @@
    [ngClass]="{'invalid': form.get('login').invalid && form.get('login').touched}">
   <span class="helper-text" *ngIf="form.get('password').invalid && form.get('password').touched">Required</span>
   <input type="submit" name="" value="OK" [disabled]="form.invalid">
+  <span class="helper-text">{{errtxt}}</span>
 </form>
