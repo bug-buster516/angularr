@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AppComponent} from '../app.component'
 @Component({
   selector: 'app-viewpage',
   templateUrl: './viewpage.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private comp: AppComponent) { }
 
   ngOnInit(): void {
+	  console.log(this.comp.tok)
   }
 
 }
