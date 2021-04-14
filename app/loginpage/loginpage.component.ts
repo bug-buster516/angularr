@@ -23,24 +23,25 @@ export class LoginpageComponent implements OnInit {
   }
   
   onSubmit() {
-	  this.errtxt=""
 	  this.auth.login(this.form.value).subscribe(
-	  (data:Response) =>{ this.comp=data["token"],
-		this.tkn=data["token"],
-		console.log(this.comp)
-	  
+	  (data:Response) =>{ this.tkn=data["token"],
+		this.comp=data["token"],
+		console.log(this.tkn)
+		if (this.tkn===undefined){
+		   console.log("Wrong login/password!"),
+		   this.errtxt="Wrong login/password"
+		}
+		else{
+		  this.router.navigate(['/viewdata'])
+		}
 	  }	,
 	  error=>{
 		  console.warn(error)
 	  }
 	  )
-	  if (this.tkn===undefined){
-		   console.log("Wrong login/password!"),
-		   this.errtxt="Wrong login/password"
-	  }
-	  else{
-		  this.router.navigate(['/viewdata'])
-	  }
+	  this.errtxt=""
+	  
+	 
   }
 
 }
