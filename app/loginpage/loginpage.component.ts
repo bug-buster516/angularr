@@ -24,10 +24,11 @@ export class LoginpageComponent implements OnInit {
   
   onSubmit() {
 	  this.auth.login(this.form.value).subscribe(
-	  (data:Response) =>{ this.tkn=data["token"],
-		this.comp=data["token"],
-		console.log(this.tkn)
-		if (this.tkn===undefined){
+	  (data:Response) =>{ this.tkn=data,
+		this.comp.tok=data["token"],
+		console.log(this.tkn),
+		console.log(this.comp.tok)
+		if (this.tkn===undefined || this.comp.tok===undefined){
 		   console.log("Wrong login/password!"),
 		   this.errtxt="Wrong login/password"
 		}
