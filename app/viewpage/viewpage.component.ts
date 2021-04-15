@@ -9,12 +9,21 @@ import {ActivatedRoute,Router} from '@angular/router'
 })
 export class ViewpageComponent implements OnInit {
 	dataSymblos: any
-  constructor(private comp: AppComponent) { 
+	
+  constructor(private router: Router, private route: ActivatedRoute, private comp: AppComponent) { 
   
   }
 
   ngOnInit(): void {
-	  console.log(this.comp.tok)
+	  const usertoken={
+		 token:this.comp.tok
+		}
+	  console.log(usertoken)
+	  if (usertoken.token===undefined){
+		   console.log("Wrong login/password!"),
+		  this.router.navigate(['/login'])
+		}
+		
   }
 
 }
