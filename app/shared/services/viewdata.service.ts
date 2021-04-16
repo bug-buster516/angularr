@@ -7,11 +7,13 @@ import { map, retry, catchError } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class viewData {
+	
 	constructor(private http: HttpClient){
 		
 	}
 	
 	getD (user: Response): Observable<any> {
+	
 	return this.http.post('http://bmhmh.ho.ua/index.php/api/getRecords', user)
 	}
 }
