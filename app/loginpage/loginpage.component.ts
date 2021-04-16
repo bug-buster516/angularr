@@ -40,7 +40,7 @@ export class LoginpageComponent implements OnInit {
 		  console.warn(error)
 	  }
 	  )
-	  this.errtxt=""
+	
 	  
 	 
   }
