@@ -9,9 +9,10 @@ import {ActivatedRoute,Router} from '@angular/router'
   styleUrls: ['./viewpage.component.css']
 })
 export class ViewpageComponent implements OnInit {
-	dataSymblos: any
+	dataSymbols: any
 	tk: Response
-	
+	headers=["Date", "Time","Phone","User","Event"]
+	headers2=["Date", "Time","Phone","Name","Event"]
   constructor(private vie: viewData, private router: Router, private route: ActivatedRoute, private comp: AppComponent) { 
   
   }
@@ -22,14 +23,12 @@ export class ViewpageComponent implements OnInit {
 		   console.log("Wrong login/password!"),
 		  this.router.navigate(['/login'])
 		}
-	console.log(this.comp.tok)
 	this.tk={
 		  token:this.comp.tok
 	  }
-	 console.log(this.comp)
-	  console.log(this.tk)
 	 this.vie.getD(this.tk).subscribe(
-	  (data:Response) =>{ console.log(data)
+	  (data:Response) =>{ this.dataSymbols=data
+	  console.log(this.dataSymbols)
 	  }	,
 	  error=>{
 		  console.warn(error)
